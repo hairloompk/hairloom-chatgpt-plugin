@@ -1,36 +1,39 @@
 openapi: 3.0.1
 info:
-  title: Hairloom Search API
-  version: '1.0'
-  description: API used by ChatGPT plugin to search Hairloom content.
+  title: Hairloom Product Search API
+  version: 1.0.0
+  description: API for searching products from the Hairloom Shopify Storefront API.
+
 servers:
-  - url: https://<YOUR_RENDER_SERVICE>
+  - url: https://hairloom-plugin.onrender.com
+
 paths:
   /search:
     get:
-      summary: Search site content (products, blog)
+      summary: Search products from Hairloom store
+      operationId: searchProducts
       parameters:
         - name: q
           in: query
           required: true
           schema:
             type: string
+          description: Search query (keywords)
         - name: limit
           in: query
           required: false
           schema:
             type: integer
-            default: 5
+            default: 10
+          description: Number of results to return
       responses:
-        '200':
-          description: Search results
+        "200":
+          description: Successful response with product results
           content:
             application/json:
               schema:
                 type: object
                 properties:
-                  query:
-                    type: string
                   results:
                     type: array
                     items:
@@ -40,74 +43,13 @@ paths:
                           type: string
                         title:
                           type: string
-                        url:
+                        description:
                           type: string
-                        snippet:
+                        price:
                           type: string
-                        score:
-                          type: number
-  /product/{id}:
-    get:
-      summary: Get product details by product id or handle
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Product
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  id: { type: string }
-                  title: { type: string }
-                  description: { type: string }
-                  url: { type: string }
-                  price: { type: string }
-                  images:
-                    type: array
-                    items:
-                      type: string
-  /blog/{slug}:
-    get:
-      summary: Fetch a blog/article by slug
-      parameters:
-        - name: slug
-          in: path
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Blog article
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  title: { type: string }
-                  url: { type: string }
-                  excerpt: { type: string }
-                  content: { type: string }
-  /faq:
-    get:
-      summary: Fetch site FAQs
-      responses:
-        '200':
-          description: FAQs
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  faqs:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        question: { type: string }
-                        answer: { type: string }
+                        image:
+                          type: string
+        "400":
+          description: Invalid request
+        "500":
+          description: Server error
