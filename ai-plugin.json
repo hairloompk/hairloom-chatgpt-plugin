@@ -1,18 +1,17 @@
 {
   "schema_version": "v1",
-  "name_for_human": "Hairloom Search",
-  "name_for_model": "hairloom_search",
-  "description_for_human": "Search products, blog posts and FAQ on Hairloom.",
-  "description_for_model": "Plugin for searching Hairloom product listings, blog posts, and FAQ. Use /search for product search, /product/{id} for detailed product info, /blog/{slug} for articles, and /faq for FAQs.",
+  "name_for_human": "Hairloom Product Search",
+  "name_for_model": "hairloom_product_search",
+  "description_for_human": "Search products from the Hairloom store.",
+  "description_for_model": "Allows searching for products from the Hairloom Shopify store using keyword queries.",
   "auth": {
     "type": "none"
   },
   "api": {
     "type": "openapi",
-    "url": "https://<YOUR_RENDER_SERVICE>/openapi.yaml",
-    "is_user_authenticated": false
+    "url": "https://hairloom-plugin.onrender.com/openapi.yaml"
   },
-  "logo_url": "https://hairloom.pk/assets/logo.png",
-  "contact_email": "admin@hairloom.pk",
-  "legal_info_url": "https://hairloom.pk/privacy"
+  "logo_url": "https://hairloom-plugin.onrender.com/logo.png",
+  "contact_email": "hairloomuk@gmail.com",
+  "legal_info_url": "https://hairloom.pk"
 }
