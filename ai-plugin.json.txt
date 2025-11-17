@@ -1,0 +1,18 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "Hairloom Search",
+  "name_for_model": "hairloom_search",
+  "description_for_human": "Search products, blog posts and FAQ on Hairloom.",
+  "description_for_model": "Plugin for searching Hairloom product listings, blog posts, and FAQ. Use /search for product search, /product/{id} for detailed product info, /blog/{slug} for articles, and /faq for FAQs.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://<YOUR_RENDER_SERVICE>/openapi.yaml",
+    "is_user_authenticated": false
+  },
+  "logo_url": "https://hairloom.pk/assets/logo.png",
+  "contact_email": "admin@hairloom.pk",
+  "legal_info_url": "https://hairloom.pk/privacy"
+}
